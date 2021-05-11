@@ -10,7 +10,7 @@
         </h1>
         <div>
           <% if in_saved_list? @rand_item %>
-              <p class="badge badge-light badge-pill">saved</p>
+              <small class="badge badge-light badge-pill">saved</small>
           <% end %>
         </div>
         <p class="lead">Ethically Produced. Thoughtfully Designed.</p>
@@ -39,28 +39,39 @@
       </div>
       
     </div>
-    
-    <div class="col-sm mt-4">
-      
-      <div class="container hori-scroll">
-        <div class="row text-center">
-          <% @items.each do |item| %>
-          
-            <div class="col-6" style="width: 18rem">
-              <div class="card h-100">
-                <img class="card-img-top" src="https://fabulesslyfrugal.com/wp-content/uploads/2012/06/target-mens-clothing-sale.png" alt="card">
-                <div class="card-body">
-                  <p class="card-text" style="white-space:normal"><%= item.name %></p>
-                  <p class="card-text"><%= number_to_currency  item.price %></p>
-                </div>
-              </div>
+  </div>
+  
+  <div class="row">
+    <% @items.each do |item| %>
+    <div class="col-6 p-1">
+        <% unless in_saved_list? item %>
+          <%= link_to items_list_save_path(item), method: :post do %>
+          <div class="card">
+            <img class="card-img-top" src="https://fabulesslyfrugal.com/wp-content/uploads/2012/06/target-mens-clothing-sale.png" alt="card">
+            <div class="card-body">
+              <p class="card-text" style="white-space:normal"><%= item.name %></p>
+              <p class="card-text"><%= number_to_currency  item.price %></p>
             </div>
-            
+          </div>
           <% end %>
           
-      
-        </div>
+        <% else %>  
+          <%= link_to items_list_remove_path(item), method: :post do %>
+          <div class="card">
+            <img class="card-img-top" src="https://fabulesslyfrugal.com/wp-content/uploads/2012/06/target-mens-clothing-sale.png" alt="card">
+            <div class="card-body">
+              <p class="card-text" style="white-space:normal"><%= item.name %></p>
+              <p class="card-text"><%= number_to_currency  item.price %></p>
+              <small class="badge badge-light badge-pill">saved</small>
+            </div>
+          </div>
+          <% end %>
+        <% end %>
+        
+        
+
       </div>
+      <% end %>
     </div>
     
   </div>
