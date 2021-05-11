@@ -1,33 +1,52 @@
 
-<div class="container p-0">
+<div class="container">
   <div class="row">
     <div class="col-sm">
-      <div class="card card-img p-4"
+      <div class="card card-img p-4 mt-4"
         style="background-image: url(https://i.pinimg.com/originals/c9/ee/38/c9ee38c2a7cbc5135cd3849584908702.jpg)">
       
-        <h1 class="display-8"><%= @rand_item.name %></h1>
+        <h1 class="display-8">
+          <%= @rand_item.name %>
+        </h1>
+        <div>
+          <% if in_saved_list? @rand_item %>
+              <p class="badge badge-light badge-pill">saved</p>
+          <% end %>
+        </div>
         <p class="lead">Ethically Produced. Thoughtfully Designed.</p>
         <hr class="my-4">
         <div class="d-flex justify-content-between">
+          <div>
           <p><%= number_to_currency  @rand_item.price %></p>
+          </div>
+          <div>
+            <% if in_saved_list? @rand_item %>
+              <a class="" href="#" role="button">
+                <%= link_to icon('fas', 'minus'), items_list_remove_path(@rand_item), method: :post,
+                  class: "btn btn-danger btn-md" %>
+              </a>
+            <% else %>
+            
+              <a class="" href="#" role="button">
+                <%= link_to icon('fas', 'plus'), items_list_save_path(@rand_item), method: :post,
+                  class: "btn btn-dark btn-md" %>
+              </a>
+            <% end %>
+          </div>
           
-          <p class="lead">
-            <a class="btn btn-dark btn-lg" href="#" role="button">
-              <%= icon('fas', 'plus') %>
-            </a>
-          </p>
+          
         </div>
       </div>
       
     </div>
     
-    <div class="col-sm my-4">
+    <div class="col-sm mt-4">
       
       <div class="container hori-scroll">
         <div class="row text-center">
           <% @items.each do |item| %>
           
-            <div class="col-7" style="width: 18rem">
+            <div class="col-6" style="width: 18rem">
               <div class="card h-100">
                 <img class="card-img-top" src="https://fabulesslyfrugal.com/wp-content/uploads/2012/06/target-mens-clothing-sale.png" alt="card">
                 <div class="card-body">
@@ -42,9 +61,8 @@
       
         </div>
       </div>
-
-    
     </div>
+    
   </div>
 </div>
 

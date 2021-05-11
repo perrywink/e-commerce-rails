@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: %i[ show edit update destroy ]
+  before_action :set_item, only: %i[ show edit update destroy save_into_list remove_from_list ]
 
   # GET /items or /items.json
   def index
@@ -55,6 +55,42 @@ class ItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def save_into_list
+    @saved_list = session[:saved_list]
+    
+    unless @saved_list
+      @saved_list = []
+    end
+    
+    if @item
+      # cannot use :id here because of JSON semantics
+      if @saved_list.none?{|i| i["id"] == @item.id }
+        @saved_list << @item
+        redirect_to root_path, flash: { success: "Item saved!" }
+      else
+        redirect_to root_path, flash: { warning: "Item already saved!" }
+      end
+      
+      puts @saved_list.inspect
+    end
+    session[:saved_list] = @saved_list
+  end
+
+
+  def remove_from_list
+    @saved_list = session[:saved_list]
+    if @item
+      if @saved_list.delete_if{|i| i["id"] == @item.id }
+        redirect_to root_path, flash: { success: "Item removed from list!" }
+      else
+        redirect_to root_path, flash: { warning: "You cannot remove an unsaved item!" }
+      end
+    end
+    puts @saved_list.inspect
+    session[:saved_list] = @saved_list
+  end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.
