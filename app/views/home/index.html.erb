@@ -1,0 +1,54 @@
+
+<div class="container p-0">
+  <div class="row">
+    <div class="col-sm">
+      <div class="card card-img p-4"
+        style="background-image: url(https://i.pinimg.com/originals/c9/ee/38/c9ee38c2a7cbc5135cd3849584908702.jpg)">
+      
+        <h1 class="display-8"><%= @rand_item.name %></h1>
+        <p class="lead">Ethically Produced. Thoughtfully Designed.</p>
+        <hr class="my-4">
+        <div class="d-flex justify-content-between">
+          <p><%= number_to_currency  @rand_item.price %></p>
+          
+          <p class="lead">
+            <a class="btn btn-dark btn-lg" href="#" role="button">
+              <%= icon('fas', 'plus') %>
+            </a>
+          </p>
+        </div>
+      </div>
+      
+    </div>
+    
+    <div class="col-sm my-4">
+      
+      <div class="container hori-scroll">
+        <div class="row text-center">
+          <% @items.each do |item| %>
+          
+            <div class="col-7" style="width: 18rem">
+              <div class="card h-100">
+                <img class="card-img-top" src="https://fabulesslyfrugal.com/wp-content/uploads/2012/06/target-mens-clothing-sale.png" alt="card">
+                <div class="card-body">
+                  <p class="card-text" style="white-space:normal"><%= item.name %></p>
+                  <p class="card-text"><%= number_to_currency  item.price %></p>
+                </div>
+              </div>
+            </div>
+            
+          <% end %>
+          
+      
+        </div>
+      </div>
+
+    
+    </div>
+  </div>
+</div>
+
+
+
+
+

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root to: 'home#index'
+  
   resources :collections
   resources :items
   resources :item_collections, only: [:new, :create, :destroy]
