@@ -6,4 +6,10 @@ class HomeController < ApplicationController
     offset = rand(Item.count)
     @rand_item = Item.offset(offset).first
   end
+  
+  def newsletter
+    email = params[:email]
+    NewsletterMailer.signup_confirmation(email).deliver
+    redirect_to root_path, flash: { success: "Check your inbox!" }
+  end
 end
