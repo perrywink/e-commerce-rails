@@ -1,0 +1,2 @@
+module HelpAndSupportHelper
+end

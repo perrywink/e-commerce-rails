@@ -5,4 +5,8 @@ class Collection < ApplicationRecord
     has_many :items, through: :item_collections
     
     has_one_attached :image
+    
+    def thumbnail
+        self.image.variant(resize: '400x400').processed
+    end
 end

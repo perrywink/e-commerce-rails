@@ -8,6 +8,7 @@ class CollectionsController < ApplicationController
 
   # GET /collections/1 or /collections/1.json
   def show
+    @items = @collection.items
   end
 
   # GET /collections/new

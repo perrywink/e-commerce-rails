@@ -1,29 +1,20 @@
-<p id="notice"><%= notice %></p>
+<h1 class="row container-fluid mt-4 p-4">Collections</h1>
 
-<h1>Collections</h1>
+<div class="row container-fluid">
+<% @collections.each do |collection| %>
+  <div class="col-6 p-1">
+  <%= link_to collection_path(collection) do %>
+  
+    <div class="card h-100">
+      <%= image_tag(collection.thumbnail, class:"card-img-top") %>
+      <div class="card-body">
+        <p class="card-text" style="white-space:normal"><%= collection.name %></p>
+      </div>
+    </div>  
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Image</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <% end %>
+  </div>
+<% end %>
+</div>  
 
-  <tbody>
-    <% @collections.each do |collection| %>
-      <tr>
-        <td><%= collection.name %></td>
-        <td><%= collection.image %></td>
-        <td><%= link_to 'Show', collection %></td>
-        <td><%= link_to 'Edit', edit_collection_path(collection) %></td>
-        <td><%= link_to 'Destroy', collection, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
-
-<%= link_to 'New Collection', new_collection_path %>

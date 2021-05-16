@@ -28,7 +28,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -67,7 +67,7 @@ gem 'jquery-rails'
 gem 'autoprefixer-rails', '~> 9.1.0'
 gem 'font-awesome-sass', '~> 5.15.1'
 
-# Connect to s3
+# Connect to s3 for image storage
 gem "aws-sdk-s3", require: false
 
 

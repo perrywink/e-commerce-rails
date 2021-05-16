@@ -19,7 +19,7 @@ class ItemsController < ApplicationController
   # GET /items/1/edit
   def edit
   end
-
+  
   # POST /items or /items.json
   def create
     @item = Item.new(item_params)
@@ -58,6 +58,11 @@ class ItemsController < ApplicationController
       format.html { redirect_to items_url, notice: "Item was successfully removed." }
       format.json { head :no_content }
     end
+  end
+  
+  def save_list
+    @items = Item.all
+    @saved_list = session[:saved_list]
   end
   
   def save_into_list
@@ -104,6 +109,6 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.require(:item).permit(:name, :price, :image)
+      params.require(:item).permit(:name, :price, :image, collection_ids:[])
     end
 end

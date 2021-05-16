@@ -1,10 +1,9 @@
 
 
-<div class="row">
-  <div class="col">
+<div class="row m-0 p-0">
+  <div class="col-12 m-0 p-0">
     <div class="card card-img p-4 mt-4 cover-image overlay"
-      style="background-image:url(<%=url_for(@rand_item.image) if @rand_item.image%>)"
-    >
+      style="background-image:url(<%=url_for(@rand_item.image) if @rand_item.image%>)">
     
       <h1 class="display-8">
         <%= @rand_item.name %>
@@ -15,6 +14,7 @@
         <% end %>
       </div>
       <p class="lead">Ethically Produced. Thoughtfully Designed.</p>
+      
       <hr class="my-4">
       <div class="d-flex justify-content-between">
         <div>
@@ -40,7 +40,7 @@
     </div>
     
   </div>
-  </div>
+</div>
 
 <h2 class="row container-fluid mt-4 p-4">Popular</h2>
   
@@ -49,7 +49,7 @@
   <div class="col-6 p-1">
       <% unless in_saved_list? item %>
         <%= link_to items_list_save_path(item), method: :post do %>
-        <div class="card">
+        <div class="card h-100">
           <%= image_tag(item.image, class:"card-img-top") %>
           <div class="card-body">
             <p class="card-text" style="white-space:normal"><%= item.name %></p>
@@ -61,8 +61,8 @@
         
       <% else %>  
         <%= link_to items_list_remove_path(item), method: :post do %>
-        <div class="card">
-          <%= image_tag(item.image, class:"card-img-top") %>
+        <div class="card h-100">
+          <%= image_tag(item.thumbnail, class:"card-img-top") %>
           <div class="card-body">
             <p class="card-text" style="white-space:normal"><%= item.name %></p>
             <p class="card-text"><%= number_to_currency  item.price %></p>
@@ -74,6 +74,36 @@
   </div>
   <% end %>
 </div>
+
+<hr class="my-4">
+
+<div class="row container-fluid mt-4 p-4 d-flex justify-content-between">
+  <h2>Collections</h2>
+  <div>
+    <%= link_to collections_path, class: "btn btn-primary" do %>
+      See All <i class = "fas fa-plus"></i>
+    <% end %>
+  </div>
+</div>
+
+<div class="row container-fluid">
+<% @collections.each do |collection| %>
+  <div class="col-6 p-1">
+  <%= link_to collection_path(collection) do %>
+  
+    <div class="card h-100">
+      <%= image_tag(collection.thumbnail, class:"card-img-top") %>
+      <div class="card-body">
+        <p class="card-text" style="white-space:normal"><%= collection.name %></p>
+      </div>
+    </div>  
+
+  <% end %>
+  </div>
+<% end %>
+</div>  
+  
+
   
 
 

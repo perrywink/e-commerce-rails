@@ -1,14 +1,21 @@
-<p id="notice"><%= notice %></p>
+<div class="container p-4">
+  <h1><%= @collection.name %></h1>
+  <p class="lead"><%= @collection.items.count %> items in collection</p>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @collection.name %>
-</p>
 
-<p>
-  <strong>Image:</strong>
-  <%= @collection.image %>
-</p>
+<div class="row container-fluid">
+  <% @items.each do |item| %>
+  <div class="col-6 p-1">
+    <div class="card h-100">
+      <%= image_tag(item.image, class:"card-img-top") %>
+      <div class="card-body">
+        <p class="card-text" style="white-space:normal"><%= item.name %></p>
+        <p class="card-text"><%= number_to_currency  item.price %></p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
 
-<%= link_to 'Edit', edit_collection_path(@collection) %> |
 <%= link_to 'Back', collections_path %>

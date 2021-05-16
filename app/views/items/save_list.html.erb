@@ -1,0 +1,27 @@
+<h2 class="row container-fluid mt-4 p-4">Saved</h2>
+  
+<div class="row container-fluid">
+  
+  <% @items.each do |item| %>
+    <% if in_saved_list? item %>
+      <div class="col-6 p-1">
+    
+        <div class="card">
+          <%= image_tag(item.image, class:"card-img-top") %>
+          <div class="card-body">
+            <p class="card-text" style="white-space:normal"><%= item.name %></p>
+            <p class="card-text"><%= number_to_currency  item.price %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+    
+  <% if @saved_list.empty? %>
+    
+    <p class="container"> Nothing saved yet...</p>
+  
+  <% end %>
+  
+
+</div>
