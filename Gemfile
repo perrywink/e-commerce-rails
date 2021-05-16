@@ -67,4 +67,8 @@ gem 'jquery-rails'
 gem 'autoprefixer-rails', '~> 9.1.0'
 gem 'font-awesome-sass', '~> 5.15.1'
 
+# Connect to s3
+gem "aws-sdk-s3", require: false
+
+
 

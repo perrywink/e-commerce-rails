@@ -12,3 +12,8 @@ a:active {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.overlay{
+  box-shadow: inset 2000px 0 0 0 rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 255, 255, 1);
+}
