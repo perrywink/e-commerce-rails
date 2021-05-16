@@ -1,81 +1,82 @@
 
-<div class="container">
-  <div class="row">
-    <div class="col-sm">
-      <div class="card card-img p-4 mt-4"
-        style="background-image: url(https://i.pinimg.com/originals/c9/ee/38/c9ee38c2a7cbc5135cd3849584908702.jpg)">
-      
-        <h1 class="display-8">
-          <%= @rand_item.name %>
-        </h1>
+
+<div class="row">
+  <div class="col">
+    <div class="card card-img p-4 mt-4 cover-image"
+      style="background-image:url(<%=url_for(@rand_item.image) if @rand_item.image%>)"
+    >
+    
+      <h1 class="display-8">
+        <%= @rand_item.name %>
+      </h1>
+      <div>
+        <% if in_saved_list? @rand_item %>
+            <small class="badge badge-dark badge-pill">saved</small>
+        <% end %>
+      </div>
+      <p class="lead">Ethically Produced. Thoughtfully Designed.</p>
+      <hr class="my-4">
+      <div class="d-flex justify-content-between">
+        <div>
+        <p><%= number_to_currency  @rand_item.price %></p>
+        </div>
         <div>
           <% if in_saved_list? @rand_item %>
-              <small class="badge badge-light badge-pill">saved</small>
+            <a class="" href="#" role="button">
+              <%= link_to icon('fas', 'minus'), items_list_remove_path(@rand_item), method: :post,
+                class: "btn btn-danger btn-md" %>
+            </a>
+          <% else %>
+          
+            <a class="" href="#" role="button">
+              <%= link_to icon('fas', 'plus'), items_list_save_path(@rand_item), method: :post,
+                class: "btn btn-dark btn-md" %>
+            </a>
           <% end %>
         </div>
-        <p class="lead">Ethically Produced. Thoughtfully Designed.</p>
-        <hr class="my-4">
-        <div class="d-flex justify-content-between">
-          <div>
-          <p><%= number_to_currency  @rand_item.price %></p>
-          </div>
-          <div>
-            <% if in_saved_list? @rand_item %>
-              <a class="" href="#" role="button">
-                <%= link_to icon('fas', 'minus'), items_list_remove_path(@rand_item), method: :post,
-                  class: "btn btn-danger btn-md" %>
-              </a>
-            <% else %>
-            
-              <a class="" href="#" role="button">
-                <%= link_to icon('fas', 'plus'), items_list_save_path(@rand_item), method: :post,
-                  class: "btn btn-dark btn-md" %>
-              </a>
-            <% end %>
-          </div>
-          
-          
-        </div>
-      </div>
-      
-    </div>
-  </div>
-  
-  <div class="row">
-    <% @items.each do |item| %>
-    <div class="col-6 p-1">
-        <% unless in_saved_list? item %>
-          <%= link_to items_list_save_path(item), method: :post do %>
-          <div class="card">
-            <img class="card-img-top" src="https://fabulesslyfrugal.com/wp-content/uploads/2012/06/target-mens-clothing-sale.png" alt="card">
-            <div class="card-body">
-              <p class="card-text" style="white-space:normal"><%= item.name %></p>
-              <p class="card-text"><%= number_to_currency  item.price %></p>
-            </div>
-          </div>
-          <% end %>
-          
-        <% else %>  
-          <%= link_to items_list_remove_path(item), method: :post do %>
-          <div class="card">
-            <img class="card-img-top" src="https://fabulesslyfrugal.com/wp-content/uploads/2012/06/target-mens-clothing-sale.png" alt="card">
-            <div class="card-body">
-              <p class="card-text" style="white-space:normal"><%= item.name %></p>
-              <p class="card-text"><%= number_to_currency  item.price %></p>
-              <small class="badge badge-light badge-pill">saved</small>
-            </div>
-          </div>
-          <% end %>
-        <% end %>
         
         
-
       </div>
-      <% end %>
     </div>
     
   </div>
+  </div>
+
+<h2 class="row container-fluid mt-4 p-4">Popular</h2>
+  
+<div class="row container-fluid">
+  <% @items.each do |item| %>
+  <div class="col-6 p-1">
+      <% unless in_saved_list? item %>
+        <%= link_to items_list_save_path(item), method: :post do %>
+        <div class="card">
+          <%= image_tag(item.image, class:"card-img-top") %>
+          <div class="card-body">
+            <p class="card-text" style="white-space:normal"><%= item.name %></p>
+            <p class="card-text"><%= number_to_currency  item.price %></p>
+            <small class="badge badge-pill badge-info">unsaved</small>
+          </div>
+        </div>
+        <% end %>
+        
+      <% else %>  
+        <%= link_to items_list_remove_path(item), method: :post do %>
+        <div class="card">
+          <%= image_tag(item.image, class:"card-img-top") %>
+          <div class="card-body">
+            <p class="card-text" style="white-space:normal"><%= item.name %></p>
+            <p class="card-text"><%= number_to_currency  item.price %></p>
+            <small class="badge badge-pill badge-dark">saved</small>
+          </div>
+        </div>
+        <% end %>
+      <% end %>
+  </div>
+  <% end %>
 </div>
+  
+
+
 
 
 

@@ -3,4 +3,6 @@ class Collection < ApplicationRecord
     # Items can exist outside any collection.
     has_many :item_collections, dependent: :delete_all
     has_many :items, through: :item_collections
+    
+    has_one_attached :image
 end

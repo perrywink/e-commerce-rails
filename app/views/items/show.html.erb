@@ -10,10 +10,9 @@
   <%= @item.price %>
 </p>
 
-<p>
-  <strong>Image:</strong>
-  <%= @item.image %>
-</p>
+<div>
+  <%= image_tag(@item.image, style: "height:400px") %>
+</div>
 
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>

@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: %i[ show edit update destroy save_into_list remove_from_list ]
+  
 
   # GET /items or /items.json
   def index
@@ -22,6 +23,9 @@ class ItemsController < ApplicationController
   # POST /items or /items.json
   def create
     @item = Item.new(item_params)
+    
+    #random popularity score assigned between 1-10 (pass level)
+    @item.popularity = (rand()*10).to_i
 
     respond_to do |format|
       if @item.save
