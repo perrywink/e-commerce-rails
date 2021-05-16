@@ -10,7 +10,17 @@
     <div class="navbar-nav">
       <%= link_to "Home", root_path, class: "nav-item nav-link" %>
       <%= link_to "Saved", saved_path, class: "nav-item nav-link"  %>
-      <%= link_to "Shop", collections_path, class: "nav-item nav-link"  %>
+      
+      <div class="nav-item dropdown" aria-labelledby="navbarDropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Shop</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <% Collection.all.each do |collection| %>
+            <%= link_to collection.name , collection_path(collection), class: "nav-item nav-link" %>
+          <% end %>
+        </div>
+      </div>
+      
+      <%= link_to "Help and Support", help_and_support_path, class: "nav-item nav-link"  %>
     </div>
   </div>
   
