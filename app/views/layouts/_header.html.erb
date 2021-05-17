@@ -21,6 +21,15 @@
       </div>
       
       <%= link_to "Help and Support", help_and_support_path, class: "nav-item nav-link"  %>
+      
+      <div class="nav-item nav-link ">
+      <% if user_signed_in? %>
+        <%= link_to "Sign Out", destroy_user_session_path, class: "btn btn-sm btn-outline-danger", method: :delete  %>
+      <% else %>
+        <%= link_to "Login", new_user_session_path, class: "btn btn-sm btn-outline-primary" %>
+        <%= link_to "Sign up", new_user_registration_path, class: "btn btn-sm btn-outline-secondary" %>
+      <% end %>
+      </div>
     </div>
   </div>
   
