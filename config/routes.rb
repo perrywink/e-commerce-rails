@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
   root to: 'home#index'
   post 'home/newsletter', to: 'home#newsletter', as: 'newsletter'
   
