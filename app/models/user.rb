@@ -4,9 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable
          
-  PASSWORD_FORMAT = /\A
-    (?=^\W{8,20})
-  /x
+  PASSWORD_FORMAT = /(?:\w[^\w]*){8,20}\z/x
   
   validates :password, 
     presence: true, 
