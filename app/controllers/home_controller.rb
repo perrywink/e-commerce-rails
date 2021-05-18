@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
+  EMAIL_FORMAT = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   
   def index
     @items = Item.order('popularity DESC').first(4)
@@ -13,7 +13,7 @@ class HomeController < ApplicationController
   def newsletter
     email = params[:email]
     if email
-      if email.match(VALID_EMAIL_REGEX)
+      if email.match(EMAIL_FORMAT)
         NewsletterMailer.signup_confirmation(email).deliver
         redirect_to root_path, flash: { success: "Check your inbox!" }
       else

@@ -5,6 +5,6 @@ class Item < ApplicationRecord
     has_one_attached :image
     
     def thumbnail
-        self.image.variant(resize: 'x1000').processed
+        self.image.variant(resize: '1000x1000')
     end
 end
