@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'shopping_bags/show'
   devise_for :users
   root to: 'home#index'
   post 'home/newsletter', to: 'home#newsletter', as: 'newsletter'
@@ -13,5 +14,7 @@ Rails.application.routes.draw do
   resources :collections
   resources :items
   resources :item_collections, only: [:new, :create, :destroy]
+  resources :order_items
+  resource :shopping_bags, only:[:show]
   
 end

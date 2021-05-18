@@ -1,0 +1,31 @@
+<div class="container-fluid mt-4 p-4">
+  <h2>Shopping Bag</h2>
+</div>
+
+<% @order_items.each do |order_item| %>
+  <div class="row">
+    
+    <div class="card m-1">
+      <%= image_tag order_item.item.primary_img, class: "card-img-top "%>
+      <div class="card-body">
+        <h5 class="card-title"><%= order_item.item.name %></h5>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><%= number_to_currency order_item.item.price %></li>
+        
+        
+        <li class="list-group-item">
+        <%= form_for order_item do |f| %>
+          <%= f.hidden_field :item_id, value: order_item.item.id %>  
+          <%= f.number_field :quantity, value: order_item.quantity.to_i %>  
+          <%= f.submit "Update Bag" %>  
+        <% end %>
+        </li>
+        
+        <li>Subtotal: <%= order_item.total %></li>
+        
+        </ul>
+      </div>
+    </div>
+    
+  </div>
+<% end %>

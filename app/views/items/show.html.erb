@@ -22,5 +22,15 @@
   <p class="lead"><%= number_to_currency @item.price %></p>
 </div>
 
+<div class="container p-4">
+  <%= form_for @order_item do |f| %>
+    <%= f.hidden_field :item_id, value: @item.id %>
+    <div class="form-group">
+      <%= f.number_field :quantity, value: 1, min: 1, class: "form-control", placeholder: "Quantity?" %>
+    </div>
+    
+    <%= f.submit "Add to Bag", class: "btn btn-primary" %>
+  <% end %>
+</div>
 
 
