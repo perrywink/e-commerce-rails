@@ -2,8 +2,9 @@
 
 <div class="row m-0 p-0">
   <div class="col-12 m-0 p-0">
+    
     <div class="card card-img p-4 mt-4 cover-image overlay"
-      style="background-image:url(<%=url_for(@rand_item.image) if @rand_item.image%>)">
+      style="background-image:url(<%=url_for(@rand_item.primary_img) %>)">
     
       <h1 class="display-8">
         <%= @rand_item.name %>
@@ -50,7 +51,7 @@
       <% unless in_saved_list? item %>
         <%= link_to items_list_save_path(item), method: :post do %>
         <div class="card h-100">
-          <%= image_tag(item.image, class:"card-img-top") %>
+          <%= image_tag(item.primary_img, class:"card-img-top") %>
           <div class="card-body">
             <p class="card-text" style="white-space:normal"><%= item.name %></p>
             <p class="card-text"><%= number_to_currency  item.price %></p>
@@ -62,7 +63,7 @@
       <% else %>  
         <%= link_to items_list_remove_path(item), method: :post do %>
         <div class="card h-100">
-          <%= image_tag(item.thumbnail, class:"card-img-top") %>
+          <%= image_tag(item.primary_img, class:"card-img-top") %>
           <div class="card-body">
             <p class="card-text" style="white-space:normal"><%= item.name %></p>
             <p class="card-text"><%= number_to_currency  item.price %></p>
@@ -75,6 +76,7 @@
   <% end %>
 </div>
 
+
 <hr class="my-4">
 
 <div class="row container-fluid mt-4 p-4 d-flex justify-content-between">
@@ -85,6 +87,7 @@
     <% end %>
   </div>
 </div>
+
 
 <div class="row container-fluid">
 <% @collections.each do |collection| %>

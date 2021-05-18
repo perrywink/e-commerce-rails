@@ -1,16 +1,40 @@
-Collection.create(name:"men")
-Collection.create(name:"women")
-Collection.create(name:"kids")
-Collection.create(name:"new")
+# Setup 4 essential collections
+men = Collection.create(name:"men")
+women = Collection.create(name:"women")
+kids = Collection.create(name:"kids")
+new = Collection.create(name:"new-ins")
+# Base collection images are uploaded to S3
+men.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images' , 'collections', 'men.jpg')), 
+                filename: 'men.jpg')
+women.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images' , 'collections', 'women.jpg')), 
+                filename: 'women.jpg')
+kids.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images' , 'collections', 'kids.jpg')), 
+                filename: 'kids.jpg')
+new.image.attach(io: File.open(Rails.root.join('app', 'assets', 'images' , 'collections', 'new.jpg')), 
+                filename: 'new.jpg')
 
-Item.create(name:"Raindrop Shirt",price:19.99)
-Item.create(name:"Raindrop Skirt",price:29.99)
-Item.create(name:"Raindrop Sweater",price:39.99)
-Item.create(name:"Raindrop Kid Hoodie",price:19.99)
+# Setup 1 Item
+hoodie = Item.create(name:"Basic Hoodie",price:79.99)
+hoodie.images.attach(io: File.open(Rails.root.join('app', 'assets', 'images' , 'items', 'blue-hoodie.jpg')), 
+                    filename: 'blue-hoodie.jpg')
+hoodie.images.attach(io: File.open(Rails.root.join('app', 'assets', 'images' , 'items', 'blue-hoodie-2.jpg')), 
+                    filename: 'blue-hoodie-2.jpg')
+hoodie.images.attach(io: File.open(Rails.root.join('app', 'assets', 'images' , 'items', 'blue-hoodie-3.jpg')), 
+                    filename: 'blue-hoodie-3.jpg')
 
+# Classifying item under collections                    
 ItemCollection.create(collection_id:1,item_id:1)
 ItemCollection.create(collection_id:2,item_id:1)
-ItemCollection.create(collection_id:2,item_id:2)
-ItemCollection.create(collection_id:3,item_id:4)
-ItemCollection.create(collection_id:4,item_id:3)
-ItemCollection.create(collection_id:5,item_id:4)
+
+# RAD user
+rad = User.new(
+  username: 'RAD',
+  email: 'rad2021rmit@gmail.com', 
+  password: 'Rails2021', 
+  password_confirmation: 'Rails2021'
+)
+rad.save!
+
+
+
+

@@ -7,6 +7,8 @@ class Collection < ApplicationRecord
     has_one_attached :image
     
     def thumbnail
-        self.image.variant(resize: '400x400').processed
+        self.image.variant(combine_options: {thumbnail: "500x500^", gravity: "center", extent:"500x500"}).processed
     end
+
 end
+
