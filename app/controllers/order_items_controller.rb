@@ -4,7 +4,7 @@ class OrderItemsController < ApplicationController
     @order_item = @order.order_items.new(order_params)
     if @order.save
       session[:order_id] = @order.id
-      flash[:success] = "Item added to cart!"
+      redirect_back fallback_location: root_path, flash: { success: "Item added to bag!" }
     end
   end
   
