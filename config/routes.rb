@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   resources :items
   resources :item_collections, only: [:new, :create, :destroy]
   resources :order_items
+  
+  post 'shopping_bags/checkout', to: 'shopping_bags#checkout', as: 'checkout'
   resource :shopping_bags, only:[:show]
+  
+  
   
 end

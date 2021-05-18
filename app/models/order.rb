@@ -10,7 +10,7 @@ class Order < ApplicationRecord
             else
                 0
             end
-        end
+        end.sum
     end
     
     private

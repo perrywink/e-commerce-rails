@@ -6,6 +6,7 @@
 
 <div class="row container-fluid">
   <% @items.each do |item| %>
+  <%= link_to item_path(item) do %>
   <div class="col-6 p-1">
     <div class="card h-100">
       <%= image_tag(item.primary_img, class:"card-img-top") %>
@@ -14,8 +15,9 @@
         <p class="card-text"><%= number_to_currency  item.price %></p>
       </div>
     </div>
-  </div>
   <% end %>
+  </div>
 </div>
+<% end %>
 
 <%= link_to 'Back', collections_path %>

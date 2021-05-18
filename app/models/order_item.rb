@@ -27,6 +27,6 @@ class OrderItem < ApplicationRecord
     end
     
     def set_total
-        self[:total] = total * quantity
+        self[:total] = total 
     end
 end

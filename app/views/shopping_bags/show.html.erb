@@ -1,31 +1,50 @@
 <div class="container-fluid mt-4 p-4">
-  <h2>Shopping Bag</h2>
+  <h2>Shopping Bag (<%= @order_items.count %>)</h2>
+  <p class="lead">
+    Total: 
+    <%= number_to_currency current_order.subtotal %>
+  </p>
 </div>
 
+<hr class="mb-2">
+
+<% if @order_items.count == 0 %>
+  <div class="container-fluid mt-4 p-4"> 
+    <h4>It's kinda lonely here... </h4>
+    <p>Start shopping to fill this bag up!</p>
+  </div>
+<% end %>
+
 <% @order_items.each do |order_item| %>
-  <div class="row">
+  <div class="row m-0 p-1">
     
-    <div class="card m-1">
-      <%= image_tag order_item.item.primary_img, class: "card-img-top "%>
+    <div class="card w-100 mb-3 p-0">
       <div class="card-body">
-        <h5 class="card-title"><%= order_item.item.name %></h5>
+        <div class="card-title container">
+          <%= order_item.item.name %>
+          <%= number_to_currency order_item.item.price %>
+          <small>/item</small>
+        </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item"><%= number_to_currency order_item.item.price %></li>
-        
+
         
         <li class="list-group-item">
         <%= form_for order_item do |f| %>
           <%= f.hidden_field :item_id, value: order_item.item.id %>  
-          <%= f.number_field :quantity, value: order_item.quantity.to_i %>  
-          <%= f.submit "Update Bag" %>  
+          <%= f.number_field :quantity, value: order_item.quantity.to_i, class:"form-control mb-2" %>  
+          <%= f.submit "Update Bag", class: "btn btn-outline-primary" %>  
+          <%= link_to "Remove", order_item_path(order_item), method: :delete, class: "btn btn-outline-danger" %>  
         <% end %>
         </li>
         
-        <li>Subtotal: <%= order_item.total %></li>
-        
         </ul>
       </div>
+      <div class="card-footer">Subtotal: <%= order_item.total %></div>
     </div>
     
   </div>
+<% end %>
+
+<% if @order_items.count > 0 %>
+  <%= link_to "Checkout", checkout_path, method: :post %>
 <% end %>
