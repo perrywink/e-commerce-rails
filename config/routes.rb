@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  get 'shopping_bags/show'
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  
   root to: 'home#index'
   post 'home/newsletter', to: 'home#newsletter', as: 'newsletter'
   
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :item_collections, only: [:new, :create, :destroy]
   resources :order_items
   
+  get 'shopping_bags/show'
   post 'shopping_bags/checkout', to: 'shopping_bags#checkout', as: 'checkout'
   resource :shopping_bags, only:[:show]
   

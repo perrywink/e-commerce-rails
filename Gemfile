@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+# Devise auth
 gem 'devise'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -71,6 +72,11 @@ gem 'font-awesome-sass', '~> 5.15.1'
 
 # Connect to s3 for image storage
 gem "aws-sdk-s3", require: false
+
+# Omniauth
+gem "omniauth", "~> 1.9.1"
+gem 'omniauth-twitter'
+
 
 
 
