@@ -10,7 +10,8 @@ class User < ApplicationRecord
       
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
-      user.username = auth.info.nickname # why does twitter call it a nickname??
+      user.username = auth.info.nickname 
+      
       
     end
   end

@@ -74,8 +74,9 @@ gem 'font-awesome-sass', '~> 5.15.1'
 gem "aws-sdk-s3", require: false
 
 # Omniauth
-gem "omniauth", "~> 1.9.1"
+gem "omniauth"
 gem 'omniauth-twitter'
+gem 'omniauth-rails_csrf_protection', '~> 1.0'
 
 
 
