@@ -9,6 +9,10 @@ class CollectionsController < ApplicationController
   # GET /collections/1 or /collections/1.json
   def show
     @items = @collection.items
+    
+    if @collection.name == "new-ins"
+      @items = Item.all.where("created_at >= ?", 3.month.ago)
+    end
   end
 
   # GET /collections/new

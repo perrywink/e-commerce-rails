@@ -1,6 +1,6 @@
 <div class="container p-4">
   <h1><%= @collection.name %></h1>
-  <p class="lead"><%= @collection.items.count %> items in collection</p>
+  <p class="lead"><%= @items.count %> item<% if @items.count > 1 %>s<% end %> in collection</p>
 </div>
 
 

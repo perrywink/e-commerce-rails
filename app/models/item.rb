@@ -3,6 +3,13 @@ class Item < ApplicationRecord
     has_many :collections, through: :item_collections
     has_many :order_items
     
+    has_many :item_colours
+    has_many :colours, through: :item_colours
+    
+    has_many :item_sizes
+    has_many :sizes, through: :item_sizes
+    
+    
     # has_one_attached :image
     has_many_attached :images
     

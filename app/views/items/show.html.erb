@@ -29,6 +29,14 @@
       <%= f.number_field :quantity, value: 1, min: 1, class: "form-control", placeholder: "Quantity?" %>
     </div>
     
+    <div class="form-group">
+      <%= f.collection_select :colour_id, @item.colours, :id, :capitalize_name, {}, {class: "form-control"} %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.collection_select :size_id, @item.sizes, :id, :size_label, {}, {class: "form-control"} %>
+    </div>
+    
     <%= f.submit "Add to Bag", class: "btn btn-primary" %>
   <% end %>
 </div>
