@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: %i[ show edit update destroy save_into_list remove_from_list ]
+  before_action :authorized_as_admin, only: %i[ index new edit create update destroy ]
   
 
   # GET /items or /items.json

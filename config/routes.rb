@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   
   resources :collections
   resources :items
-  resources :item_collections, only: [:new, :create, :destroy]
+  # resources :item_collections, only: [:new, :create, :destroy]
   resources :order_items
   
   get 'shopping_bags/show'

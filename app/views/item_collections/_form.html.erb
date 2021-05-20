@@ -1,7 +1,7 @@
 <%= form_with(model: item_collection, local: true) do |form| %>
   <% if item_collection.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(item.errors.count, "error") %> prohibited this item_collection from being saved:</h2>
+      <h2><%= pluralize(item_collection.errors.count, "error") %> prohibited this item_collection from being saved:</h2>
 
       <ul>
       <% item_collection.errors.full_messages.each do |message| %>
@@ -11,14 +11,14 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :item %>
-    <%= form.text_field :item %>
+    <%= form.collection_select :item_id, Item.all, :id, :name, {}, {class: "form-control"} %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :collection %>
-    <%= form.text_field :collection %>
+    <%= form.collection_select :collection_id, Collection.all, :id, :name, {}, {class: "form-control"} %>
   </div>
 
 

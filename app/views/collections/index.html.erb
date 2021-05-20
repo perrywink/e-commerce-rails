@@ -9,6 +9,12 @@
       <%= image_tag(collection.thumbnail, class:"card-img-top") %>
       <div class="card-body">
         <p class="card-text" style="white-space:normal"><%= collection.name %></p>
+        <% if is_admin? %>
+        <p>
+          <%= link_to 'Edit', edit_collection_path(collection), class: "badge badge-warning badge-pill" %></td>
+          <%= link_to 'Delete', collection, method: :delete, data: { confirm: 'Are you sure?' }, class: "badge badge-danger badge-pill" %>
+        </p>
+        <% end %>
       </div>
     </div>  
 

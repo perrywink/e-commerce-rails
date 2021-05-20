@@ -1,5 +1,6 @@
 class CollectionsController < ApplicationController
   before_action :set_collection, only: %i[ show edit update destroy ]
+  before_action :authorized_as_admin, only: %i[ new edit create update destroy ]
 
   # GET /collections or /collections.json
   def index
