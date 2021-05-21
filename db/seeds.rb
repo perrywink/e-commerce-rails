@@ -95,3 +95,12 @@ rad = User.new(
 )
 rad.save!
 
+admin = User.new(
+  username: 'admin',
+  email: 'admin@raindrops.com', 
+  password: 'password', 
+  password_confirmation: 'password',
+  admin: true
+)
+admin.save!
+
