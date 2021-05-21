@@ -25,7 +25,7 @@
           <small>/item</small>
         </div>
         <div class="card-title container">
-          <span class="badge badge-pill badge-dark" style="background-color: #<%= Colour.find(order_item.colour_id).colour_code %>;">
+          <span class="badge badge-pill" style="background-color: #<%= Colour.find(order_item.colour_id).colour_code %>;">
             <%= Colour.find(order_item.colour_id).name %>
           </span>
           <span class="badge badge-pill badge-dark">
@@ -48,5 +48,7 @@
 <% end %>
 
 <% if @order_items.count > 0 %>
-  <%= link_to "Checkout", checkout_path, method: :post, class: "btn btn-primary btn-lg btn-block fixed-bottom" %>
+<div class="fixed-bottom" style="margin-bottom: 3.2rem">
+  <%= link_to "Checkout", checkout_path, method: :post, class: "btn btn-primary btn-lg btn-block" %>
+</div>
 <% end %>

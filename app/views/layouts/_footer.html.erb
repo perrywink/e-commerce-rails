@@ -1,56 +1,19 @@
-<!-- Bottom NAVBAR 1 -->
-      <footer class="mobile-bottom-nav">
-         <div id="buttonGroup" class="btn-group selectors" role="group" aria-label="Basic example">
-           <%= link_to root_path do%>
-            <button type="button" class="btn btn-secondary button-active" style="width: 25vw; height: 100%;" link_to "Home">
-               <div class="selector-holder">
-                  <i class="fas fa-home"></i>
-               </div>
-            </button>
-           <% end %>
-           <%= link_to root_path do%>
-            <button type="button" class="btn btn-secondary button-inactive" style="width: 25vw; height: 100%;">
-               <div class="selector-holder">
-                  <i class="fas fa-qrcode"></i>
-               </div>
-            </button>
-             <% end %>
-            <%= link_to saved_path do%>
-            <button type="button" class="btn btn-secondary button-inactive" style="width: 25vw; height: 100%;">
-               <div class="selector-holder">
-                  <i class="fas fa-heart"></i>
-               </div>
-            </button>
-             <% end %>
-            <%= link_to root_path do%>
-            <button type="button" class="btn btn-secondary button-inactive" style="width: 25vw; height: 100%;">
-               <div class="selector-holder">
-                  <i class="fas fa-user-circle"></i>
-               </div>
-            </button>
-             <% end %>
-         </div>
-      </footer>
+<footer class="navbar navbar-light bg-light fixed-bottom d-flex">
+ 
+  <%= link_to root_path, class: "btn btn-light" do%>
+    <i class="fas fa-home"></i>
+  <% end %>
+   
+  <%= link_to root_path, class: "btn btn-light" do%>
+    <i class="fas fa-qrcode"></i>
+  <% end %>
+   
+  <%= link_to saved_path, class: "btn btn-light " do%>
+    <i class="fas fa-heart"></i>
+  <% end %>
+     
+  <%= link_to root_path, class: "btn btn-light " do%>
+    <i class= "fas fa-user-circle"></i>
+  <% end %>
 
-
-
-<style>
-  .mobile-bottom-nav{
-  	position:fixed;
-  	bottom:0;
-  	left:0;
-  	right:0;
-  	z-index:1000;
-  	
-  	//give nav it's own compsite layer
-  	will-change:transform;
-  	transform: translateZ(0);
-  	
-  	display:flex;	
-  	
-  	height:50px;
-  	
-  	box-shadow: 0 -2px 5px -2px #333;
-  	background-color:#fff;
-  }
-</style>
+</footer>

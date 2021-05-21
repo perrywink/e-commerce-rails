@@ -16,7 +16,8 @@
   <body>
 
     <%= render "layouts/header" %>
-    <%= render "layouts/footer" %>
+    
+    <div style="margin: 3rem 0 5rem">
     <% flash.each do |key, value| %>
       <% (key == "alert" || key == "notice") ? key = "info" : key  %>
       <div class="alert alert-<%= key %> alert-dismissible m-0" role="alert">
@@ -25,5 +26,7 @@
        </div>
     <% end %>
     <%= yield %>
+    </div>
+    <%= render "layouts/footer" %>
   </body>
 </html>
