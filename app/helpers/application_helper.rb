@@ -19,4 +19,16 @@ module ApplicationHelper
         end
     end
     
+    # def current_order
+        
+    #     if session[:order_id].nil?
+    #         if !current_user.orders and user_signed_in?
+    #             Order.find(session[:order_id] = current_user.orders.last.id)
+            
+    #     else
+    #         Order.new
+    #     end
+        
+    # end
+    
 end

@@ -40,4 +40,5 @@ class User < ApplicationRecord
     confirmation: true, 
     on: :create 
   
+  has_one :order
 end

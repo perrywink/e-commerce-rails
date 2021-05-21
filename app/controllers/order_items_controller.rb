@@ -2,7 +2,7 @@ class OrderItemsController < ApplicationController
   before_action :authenticate_user!
   
   def create
-    @order = current_order
+    @order = current_user.build_order
     @order_item = @order.order_items.new(order_params)
     if @order.save
       session[:order_id] = @order.id
