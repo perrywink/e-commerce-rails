@@ -17,7 +17,7 @@
 
     <%= render "layouts/header" %>
     
-    <div style="margin: 3rem 0 5rem">
+    <div style="margin: 3.7rem 0 5rem">
     <% flash.each do |key, value| %>
       <% (key == "alert" || key == "notice") ? key = "info" : key  %>
       <div class="alert alert-<%= key %> alert-dismissible m-0" role="alert">
