@@ -43,7 +43,14 @@
   </div>
 </div>
 
-<h2 class="row container-fluid mt-4 p-4">Popular</h2>
+<div class="row container-fluid mt-4 p-4 d-flex justify-content-between">
+  <h2>Popular</h2>
+  <div>
+    <%= link_to items_path, class: "btn btn-primary" do %>
+      See All <i class = "fas fa-plus"></i>
+    <% end %>
+  </div>
+</div>
   
 <div class="row container-fluid">
   <% @items.each do |item| %>

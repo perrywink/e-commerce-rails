@@ -1,13 +1,17 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: %i[ show edit update destroy save_into_list remove_from_list ]
-  before_action :authorized_as_admin, only: %i[ index new edit create update destroy ]
+  before_action :authorized_as_admin, only: %i[ new edit create update destroy ]
   
 
   # GET /items or /items.json
   def index
-    @items = Item.all
+    @items = Item.joins(:collections).where(
+        collections: {id: params[:item][:collection_ids]}
+      ).uniq
+      
   end
-
+  
+  
   # GET /items/1 or /items/1.json
   def show
     if user_signed_in?

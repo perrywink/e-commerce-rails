@@ -18,8 +18,5 @@ class Item < ApplicationRecord
       self.images[0].variant(combine_options: {thumbnail: "500x500^", gravity: "center", extent: "500x500"}).processed
     end
     
-    def thumbnail image
-      image.variant(combine_options: {thumbnail: "500x500^", gravity: "center", extent: "500x500"}).processed
-    end
     
 end
