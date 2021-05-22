@@ -20,4 +20,9 @@
 <% end %>
 </div>
 
-<%= link_to 'Back', collections_path %>
+<div class="row container-fluid">
+  <%= link_to 'Back', collections_path, class: "btn btn-light" %>
+  <% if is_admin? %>
+    <%= link_to 'Manage Items', items_path, class: "btn btn-info" %>
+  <% end %>
+</div>
