@@ -49,7 +49,7 @@ class ItemsController < ApplicationController
     @item = Item.new(item_params)
     
     #random popularity score assigned between 1-10 (pass level)
-    @item.popularity = (rand()*10).to_i
+    # @item.popularity = (rand()*10).to_i
 
     respond_to do |format|
       if @item.save
@@ -100,12 +100,14 @@ class ItemsController < ApplicationController
       # cannot use :id here because of JSON semantics
       if @saved_list.none?{|i| i["id"] == @item.id }
         @saved_list << @item
+        
+        @item.popularity += 1
+        @item.save
+
         redirect_to root_path, flash: { success: "Item saved!" }
       else
         redirect_to root_path, flash: { warning: "Item already saved!" }
       end
-      
-      puts @saved_list.inspect
     end
     session[:saved_list] = @saved_list
   end

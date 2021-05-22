@@ -2,8 +2,10 @@ class OrderItemsController < ApplicationController
   before_action :authenticate_user!
   
   def create
-    @order = current_user.build_order
+    @order = current_order
     @order_item = @order.order_items.new(order_params)
+    @order_item.item.popularity += 1
+    @order_item.item.save
     if @order.save
       session[:order_id] = @order.id
       redirect_back fallback_location: root_path, flash: { success: "Item added to bag!" }
