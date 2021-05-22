@@ -5,9 +5,29 @@ class ItemsController < ApplicationController
 
   # GET /items or /items.json
   def index
-    @items = Item.joins(:collections).where(
-        collections: {id: params[:item][:collection_ids]}
-      ).uniq
+    @items = Item.all
+
+    if !params[:item].nil?
+      # @items = Item.includes(:collections).where(
+      #     collections: {id: params[:item][:collection_ids]}
+      #   )if !params[:item][:collection_ids].nil?
+        
+      # @items = Item.includes(:colours).where(
+      #     colours: {id: params[:item][:colour_ids]}
+      #   ).uniq if !params[:item][:colour_ids].nil?
+        
+      # @items = Item.includes(:sizes).where(
+      #     sizes: {id: params[:item][:size_id]}
+      #   ).uniq if !params[:item][:size_id].empty?
+      
+      @items = Item.includes(:collections).includes(:colours).includes(:sizes)
+          .where(collections: {id: params[:item][:collection_ids]})
+          .where(colours: {id: params[:item][:colour_ids]})
+          .where(sizes: {id: params[:item][:size_id]})
+      
+    end
+    
+    
       
   end
   
@@ -129,4 +149,5 @@ class ItemsController < ApplicationController
     def item_params
       params.require(:item).permit(:name, :price, images:[], collection_ids:[])
     end
+  
 end

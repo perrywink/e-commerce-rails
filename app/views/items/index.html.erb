@@ -1,21 +1,36 @@
-<div class="row container-fluid mt-4 p-4 d-flex justify-content-between">
+<div class="row container-fluid mt-4 p-4">
   <h1>Catalogue</h1>
-  <div>
-    <%= link_to items_path, class: "btn btn-primary" do %>
-      Filter <i class = "fa fa-filter"></i>
-    <% end %>
-  </div>
 </div>
 
-<div class="container">
+<button class="btn btn-outline-primary dropdown-toggle m-2" type="button" id="btnDropdownDemo" 
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <i class = "fa fa-filter"></i>
+</button>
+
+
+<div class="dropdown-menu p-2 w-50" style="z-index:2000">
 <%= form_tag("/items", method: 'get') do %>
-  <div>
-    <%= label_tag(:collection_ids, "filter by collection:") %>
-  </div>
+
+  <div><%= label_tag(:collection_ids, "filter by collection:") %></div>
   <%= collection_check_boxes :item, :collection_ids, Collection.all, :id, :name, include_hidden: false do |b| %>
     <%= b.label(class:"form-check-label") { b.check_box + " " + b.text } %><br>
   <% end %>
-  <%= submit_tag("Filter")%>
+  <hr class="mb-2">
+  
+  <div><%= label_tag(:collection_ids, "filter by color:") %></div>
+  <%= collection_check_boxes :item, :colour_ids, Colour.all, :id, :name, include_hidden: false do |b| %>
+    <%= b.label(class:"form-check-label") { b.check_box + " " + b.text } %><br>
+  <% end %>
+  <hr class="mb-2">
+
+  <div><%= label_tag(:size_id, "selected a size:") %></div> 
+  <%= collection_radio_buttons :item, :size_id, Size.all, :id, :name ,include_blank: true do |b| %>
+    <%= b.label(class:"form-check-label") { b.radio_button + " " + b.text } %><br>
+  <% end %>
+  
+  
+  
+  <%= submit_tag("Filter", class: "btn btn-primary")%>
   
 <% end %>
 </div>
