@@ -8,26 +8,12 @@ class ItemsController < ApplicationController
     @items = Item.all
 
     if !params[:item].nil?
-      # @items = Item.includes(:collections).where(
-      #     collections: {id: params[:item][:collection_ids]}
-      #   )if !params[:item][:collection_ids].nil?
-        
-      # @items = Item.includes(:colours).where(
-      #     colours: {id: params[:item][:colour_ids]}
-      #   ).uniq if !params[:item][:colour_ids].nil?
-        
-      # @items = Item.includes(:sizes).where(
-      #     sizes: {id: params[:item][:size_id]}
-      #   ).uniq if !params[:item][:size_id].empty?
-      
-      @items = Item.includes(:collections).includes(:colours).includes(:sizes)
-          .where(collections: {id: params[:item][:collection_ids]})
-          .where(colours: {id: params[:item][:colour_ids]})
-          .where(sizes: {id: params[:item][:size_id]})
-      
+      @items = Item.filter_by_collection(params[:item][:collection_ids])
+            .filter_by_colour(params[:item][:colour_ids])
+            .filter_by_size(params[:item][:size_id])
+
     end
-    
-    
+
       
   end
   
