@@ -2,9 +2,9 @@
   <div class="jumbotron row mb-0">
     <div class = "col sm-4">
       <% if @user.avatar.attached? %>
-        <%= image_tag resource.avatar.variant(resize: "100x100!"), class: "rounded" %>
+        <%= image_tag @user.avatar.variant(resize: "100x100!"), class: "rounded" %>
       <% else %>
-        <%= image_tag gravatar_image_url(current_user.email, size: 100), height: 100, width: 100, class: "rounded" %>
+        <%= image_tag gravatar_image_url(@user.email, size: 100), height: 100, width: 100, class: "rounded" %>
       <% end %>
     </div>
     <div class = "col">
@@ -33,7 +33,7 @@
   
   <div class="row">
     <div class="list-group col p-0 w-100">
-      <%= link_to newsletter_path, method: :post, class: "list-group-item list-group-item-action d-flex justify-content-between" do %>
+      <%= link_to newsletter_path(email: @user.email), method: :post,  class: "list-group-item list-group-item-action d-flex justify-content-between" do %>
         Subscription
         <i class="fa fa-envelope p-1"></i>
       <% end %>
