@@ -11,10 +11,7 @@ class ItemsController < ApplicationController
       @items = Item.filter_by_collection(params[:item][:collection_ids])
             .filter_by_colour(params[:item][:colour_ids])
             .filter_by_size(params[:item][:size_id])
-
     end
-
-      
   end
   
   

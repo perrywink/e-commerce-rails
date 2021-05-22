@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  root to: 'home#index'
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   
-  root to: 'home#index'
+  get 'profile/', to: 'profile#index', as: 'profile'
+  
   post 'home/newsletter', to: 'home#newsletter', as: 'newsletter'
   
   get 'items/save_list', to: 'items#save_list', as: 'saved'
@@ -13,7 +15,6 @@ Rails.application.routes.draw do
   
   resources :collections
   resources :items
-  # resources :item_collections, only: [:new, :create, :destroy]
   resources :order_items
   
   get 'shopping_bags/show'

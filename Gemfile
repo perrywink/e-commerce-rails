@@ -78,6 +78,7 @@ gem "omniauth"
 gem 'omniauth-twitter'
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
 
-
+# Gravatar
+gem 'gravatar_image_tag', '~> 1.2'
 
 

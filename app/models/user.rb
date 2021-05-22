@@ -41,4 +41,6 @@ class User < ApplicationRecord
     on: :create 
   
   has_one :order
+  
+  has_one_attached :avatar
 end
