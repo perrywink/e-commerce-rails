@@ -1,13 +1,14 @@
 # Student Details and Contribution
 Seth Danford
 s3845408
-Contribution: 37%
+Contribution: 35%
 
 Yi Jie Chuah
 s3847905
-Contribution: 63%
+Contribution: 65%
 
 # Highest level attempted: DI
+Note that there may be some features which overlap into 80+ level
 
 # Time Sheets
 ## Time Sheet (Yi Jie Chuah):
@@ -68,4 +69,7 @@ https://github.com/YiJieChuah/RAD_s3847905_s3845408
 # Additional points about our Rails app
 - Make sure to run rails db:seed to populate the app with data, including attaching images in `app/assets/images` (and re-uploading them to the s3 bucket)
 - There is an admin account from the seed file with username: "admin" and password: "password". This account has access to restricted pages like `items/new`
-- `master.key` is `adb9083e377c90d019bc025f5f58250d`. This is required for `gmail smtp`, `aws s3` and `twitter oauth` to work properly
+- `config/master.key` is `adb9083e377c90d019bc025f5f58250d`. This is required for `gmail smtp`, `aws s3` and `twitter oauth` to work properly.
+- We interpreted the filtering requirement for DI level as filtering the entire catalogue of items. 
+    - Can be accessed by clicking `all` in the navbar (under `saved`) OR
+    - by clicking on `see all` on top-right of `Popular` Section on homepage
