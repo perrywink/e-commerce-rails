@@ -1,5 +1,5 @@
 class OrderItemsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!,only: %i[ update destroy ]
   
   def create
     @order = current_order
@@ -9,7 +9,7 @@ class OrderItemsController < ApplicationController
       @order_item.item.popularity += 1
       @order_item.item.save
       session[:order_id] = @order.id
-      redirect_back fallback_location: root_path, flash: { success: "Item added to bag!" }
+      redirect_to shopping_bags_show_path, flash: { success: "Item added to bag!" }
     else
       redirect_back fallback_location: root_path, flash: { warning: "Error occured while adding to bag!" }
     end
