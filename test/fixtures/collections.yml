@@ -2,8 +2,6 @@
 
 one:
   name: MyString
-  image: MyString
 
 two:
   name: MyString
-  image: MyString
