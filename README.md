@@ -1,11 +1,11 @@
 # Student Details and Contribution
 Seth Danford
 s3845408
-Contribution: 35%
+Contribution: 37%
 
 Yi Jie Chuah
 s3847905
-Contribution: 65%
+Contribution: 63%
 
 # Highest level attempted: DI
 Note that there may be some features which overlap into 80+ level
@@ -47,20 +47,20 @@ Total Time Spent: 30:02:00
 https://rad-raindrops-proj.herokuapp.com/
 
 # Last Heroku deployment Log:
-2021-05-23T10:23:11.000000+00:00 app[api]: Build started by user s3847905@student.rmit.edu.au
-2021-05-23T10:23:42.593093+00:00 app[api]: Deploy f0426ba9 by user s3847905@student.rmit.edu.au
-2021-05-23T10:23:42.593093+00:00 app[api]: Release v14 created by user s3847905@student.rmit.edu.au
-2021-05-23T10:23:42.847517+00:00 heroku[web.1]: Restarting
-2021-05-23T10:23:42.854182+00:00 heroku[web.1]: State changed from up to starting
-2021-05-23T10:23:43.926093+00:00 heroku[web.1]: Stopping all processes with SIGTERM
-2021-05-23T10:23:44.003271+00:00 app[web.1]: - Gracefully stopping, waiting for requests to finish
-2021-05-23T10:23:44.010573+00:00 app[web.1]: === puma shutdown: 2021-05-23 10:23:44 +0000 ===
-2021-05-23T10:23:44.010577+00:00 app[web.1]: - Goodbye!
-2021-05-23T10:23:44.010677+00:00 app[web.1]: Exiting
-2021-05-23T10:23:44.106680+00:00 heroku[web.1]: Process exited with status 143
-2021-05-23T10:23:50.060035+00:00 heroku[web.1]: Starting process with command `bin/rails server -p ${PORT:-5000} -e production`
-2021-05-23T10:23:51.000000+00:00 app[api]: Build succeeded
-2021-05-23T10:24:01.076017+00:00 heroku[web.1]: State changed from starting to up
+2021-05-23T22:11:58.000000+00:00 app[api]: Build started by user s3847905@student.rmit.edu.au
+2021-05-23T22:12:27.797672+00:00 app[api]: Release v16 created by user s3847905@student.rmit.edu.au
+2021-05-23T22:12:27.797672+00:00 app[api]: Deploy 6dd2299a by user s3847905@student.rmit.edu.au
+2021-05-23T22:12:28.219733+00:00 heroku[web.1]: Restarting
+2021-05-23T22:12:28.245416+00:00 heroku[web.1]: State changed from up to starting
+2021-05-23T22:12:29.695317+00:00 heroku[web.1]: Stopping all processes with SIGTERM
+2021-05-23T22:12:29.786781+00:00 app[web.1]: - Gracefully stopping, waiting for requests to finish
+2021-05-23T22:12:29.788247+00:00 app[web.1]: === puma shutdown: 2021-05-23 22:12:29 +0000 ===
+2021-05-23T22:12:29.788290+00:00 app[web.1]: - Goodbye!
+2021-05-23T22:12:29.788374+00:00 app[web.1]: Exiting
+2021-05-23T22:12:29.906025+00:00 heroku[web.1]: Process exited with status 143
+2021-05-23T22:12:33.231355+00:00 heroku[web.1]: Starting process with command `bin/rails server -p ${PORT:-5000} -e production`
+2021-05-23T22:12:36.000000+00:00 app[api]: Build succeeded
+2021-05-23T22:12:38.995468+00:00 heroku[web.1]: State changed from starting to up
 
 # Git repository:
 RAD_s3847905_s3845408
