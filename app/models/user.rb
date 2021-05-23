@@ -3,6 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :omniauthable,
+         # Using devise to validate email, password validation is supplemented
+         :validatable, 
          omniauth_providers: %i[twitter]
   
   def self.from_omniauth(auth)
@@ -21,20 +23,15 @@ class User < ApplicationRecord
     false
   end
   
-  # Was this what you guys wanted? 8-20 characters not counting special characters
+  # 8-20 characters not counting special characters
   PASSWORD_FORMAT = /(?:\w[^\w]*){8,20}\z/x
-  EMAIL_FORMAT = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   
   # Override devise validations
   validates :username, presence: true
   
-  validates :email, 
-    presence: true,
-    format: {with: EMAIL_FORMAT}
-  
   validates :password, 
     presence: true, 
-    # length: { in: Devise.password_length }, 
+    length: { in: Devise.password_length }, 
     format: { with: PASSWORD_FORMAT }, 
     confirmation: true, 
     on: :create 
