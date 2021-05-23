@@ -32,6 +32,7 @@ module ApplicationHelper
         elsif !session[:order_id].nil?
             Order.find(session[:order_id])
         else
+            # anoymous order
             Order.new
         end
     end
