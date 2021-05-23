@@ -17,18 +17,6 @@ class ItemsController < ApplicationController
   
   # GET /items/1 or /items/1.json
   def show
-    # if user_signed_in?
-    #   if !current_user.order
-    #     @order_item = current_order.order_items.new
-    #   else
-    #     @order_item = current_order.order_items.new
-    #   end
-      
-    # else
-    #   order = Order.new
-    #   @order_item = order.order_items.new
-    # end
-    
     @order_item = current_order.order_items.new
   end
 
