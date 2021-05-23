@@ -4,9 +4,10 @@ class OrderItemsController < ApplicationController
   def create
     @order = current_order
     @order_item = @order.order_items.new(order_params)
-    @order_item.item.popularity += 1
-    @order_item.item.save
-    if @order.save
+    
+    if @order.save!
+      @order_item.item.popularity += 1
+      @order_item.item.save
       session[:order_id] = @order.id
       redirect_back fallback_location: root_path, flash: { success: "Item added to bag!" }
     else

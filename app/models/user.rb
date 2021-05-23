@@ -36,7 +36,7 @@ class User < ApplicationRecord
     confirmation: true, 
     on: :create 
   
-  has_one :order
+  has_many :orders
   
   has_one_attached :avatar
 end
