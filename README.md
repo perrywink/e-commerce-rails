@@ -7,8 +7,8 @@ Yi Jie Chuah
 s3847905
 Contribution: 63%
 
-# Highest level attempted: DI
-Note that there may be some features which overlap into 80+ level
+# Highest level attempted: 80+ Level
+Note: For 80+, only search was fully completed.
 
 # Time Sheets
 ## Time Sheet (Yi Jie Chuah):
