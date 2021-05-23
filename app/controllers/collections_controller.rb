@@ -1,6 +1,9 @@
 class CollectionsController < ApplicationController
   before_action :set_collection, only: %i[ show edit update destroy ]
   before_action :authorized_as_admin, only: %i[ new edit create update destroy ]
+  # update newins collecion every time a potential change occurs
+  before_action :set_new_ins, only: %i[ new edit create update destroy ]
+  
 
   # GET /collections or /collections.json
   def index
@@ -10,10 +13,6 @@ class CollectionsController < ApplicationController
   # GET /collections/1 or /collections/1.json
   def show
     @items = @collection.items
-    
-    if @collection.name == "new-ins"
-      @items = Item.all.where("created_at >= ?", 3.month.ago)
-    end
   end
 
   # GET /collections/new
@@ -71,5 +70,12 @@ class CollectionsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def collection_params
       params.require(:collection).permit(:name, :image)
+    end
+    
+    def set_new_ins
+      newins = Collection.find_by(name: "new-ins")
+      if newins
+        newins.items = Item.all.where("created_at >= ?", 3.month.ago)
+      end
     end
 end
