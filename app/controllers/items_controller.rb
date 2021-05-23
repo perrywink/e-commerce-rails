@@ -5,13 +5,16 @@ class ItemsController < ApplicationController
 
   # GET /items or /items.json
   def index
-    @items = Item.all
+    # @items = Item.all
+    @items = Item.search(params[:search])
 
     if !params[:item].nil?
-      @items = Item.filter_by_collection(params[:item][:collection_ids])
+      @items = Item
+            .filter_by_collection(params[:item][:collection_ids])
             .filter_by_colour(params[:item][:colour_ids])
             .filter_by_size(params[:item][:size_id])
     end
+    
   end
   
   

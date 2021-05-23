@@ -22,6 +22,14 @@ class Item < ApplicationRecord
       image.variant(combine_options: {thumbnail: "600x600^", gravity: "center", extent: "600x600"}).processed
     end
     
+    def self.search(search)
+      if search
+        self.where('UPPER(name) LIKE ?', "%#{search.upcase}%")
+      else
+        self.all
+      end
+    end
+    
     scope :filter_by_collection, -> (collection_ids) { includes(:collections).where( collections: {id: collection_ids} ) if !collection_ids.nil? }
     scope :filter_by_colour, -> (colour_ids) { includes(:colours).where( colours: {id: colour_ids}) if !colour_ids.nil? }
     scope :filter_by_size, -> (size_id) { includes(:sizes).where( sizes: {id: size_id}) if !size_id.blank? }
