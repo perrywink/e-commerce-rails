@@ -23,7 +23,7 @@ yellow = Colour.create(name:"jonquil yellow",colour_code:"ECC30B")
 orange = Colour.create(name:"mandarin orange",colour_code:"F37748")
 
 # Sizes
-sx = Size.create(name:"extra small",label:"SX")
+xs = Size.create(name:"extra small",label:"XS")
 s = Size.create(name:"small",label:"S")
 m = Size.create(name:"medium",label:"M")
 l = Size.create(name:"large",label:"L")
@@ -43,7 +43,7 @@ hoodie.images.attach(io: File.open(Rails.root.join('app', 'assets', 'images' , '
 
 
 dress = Item.create(name:"Centerfold Shirt Dress", price:79.99, colours: [black, red, blue, orange], collections: [women],
-                    sizes: [sx,s,m])
+                    sizes: [xs,s,m])
                     
 dress.images.attach(io: File.open(Rails.root.join('app', 'assets', 'images' , 'items', 'shirt-dress.jpg')), 
                     filename: 'shirt-dress.jpg')

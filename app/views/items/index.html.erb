@@ -3,41 +3,45 @@
   <h1>Catalogue</h1>
 </div>
 
-<button class="btn btn-outline-primary dropdown-toggle m-2" type="button" id="btnDropdownDemo" 
-          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-  <i class = "fa fa-filter"></i>
-</button>
-
-
-<div class="dropdown-menu p-2 w-50" style="z-index:2000">
-<%= form_tag("/items", method: 'get') do %>
-
-  <div><%= label_tag(:collection_ids, "filter by collection:") %></div>
-  <%= collection_check_boxes :item, :collection_ids, Collection.all, :id, :name, include_hidden: false do |b| %>
-    <%= b.label(class:"form-check-label") { b.check_box + " " + b.text } %><br>
+<div class="container-fluid" id="accordian">
+  <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#filterCollapse" 
+          aria-expanded="false">
+    Toggle Filter Options
+  </button>
+  
+  <div id="filterCollapse" class="collapse show"  data-parent="#accordion">
+  <%= form_tag("/items", method: 'get') do %>
+    
+    <small class="text-muted">Filter Collections</small>
+    <div class="btn-group-toggle mb-2" data-toggle="buttons">
+      <%= collection_check_boxes :item, :collection_ids, Collection.all, :id, :name, include_hidden: false do |b| %>
+          <%= b.label(class:"btn btn-light btn-sm") { b.check_box + " " + b.text } %>
+      <% end %>
+    </div>
+    
+    <small class="text-muted">Filter Colours</small>
+    <div class="btn-group-toggle mb-2" data-toggle="buttons">
+      <%= collection_check_boxes :item, :colour_ids, Colour.all, :id, :colour_code, include_hidden: false do |b| %>
+        <%= 
+          b.label(class:"btn btn-light btn-sm p-2", style:"border:2px solid ##{b.text}"){ b.check_box } 
+        %>
+      <% end %>
+    </div>
+    
+    <small class="text-muted">Filter Sizes</small>
+    <div class="btn-group-toggle mb-2" data-toggle="buttons">
+      <%= collection_radio_buttons :item, :size_id, Size.all, :id, :size_label ,include_blank: true do |b| %>
+        <%= b.label(class:"btn btn-light btn-sm") { b.radio_button + " " + b.text } %>
+      <% end %>
+    </div>
+    
+    <%= submit_tag("Filter", class: "btn btn-primary")%>
   <% end %>
-  <hr class="mb-2">
   
-  <div><%= label_tag(:collection_ids, "filter by color:") %></div>
-  <%= collection_check_boxes :item, :colour_ids, Colour.all, :id, :name, include_hidden: false do |b| %>
-    <%= b.label(class:"form-check-label") { b.check_box + " " + b.text } %><br>
-  <% end %>
-  <hr class="mb-2">
-
-  <div><%= label_tag(:size_id, "selected a size:") %></div> 
-  <%= collection_radio_buttons :item, :size_id, Size.all, :id, :name ,include_blank: true do |b| %>
-    <%= b.label(class:"form-check-label") { b.radio_button + " " + b.text } %><br>
-  <% end %>
-  
-  
-  
-  <%= submit_tag("Filter", class: "btn btn-primary")%>
-  
-<% end %>
+  </div>
 </div>
 
-
-
+<hr class="mb-3">
 
 
 <div class="container-fluid">
@@ -68,7 +72,6 @@
   </div>
 <% end %>
 </div>  
-
 
 
 
