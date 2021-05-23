@@ -9,6 +9,8 @@ class OrderItemsController < ApplicationController
     if @order.save
       session[:order_id] = @order.id
       redirect_back fallback_location: root_path, flash: { success: "Item added to bag!" }
+    else
+      redirect_back fallback_location: root_path, flash: { warning: "Error occured while adding to bag!" }
     end
   end
   
