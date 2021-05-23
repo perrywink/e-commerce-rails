@@ -13,13 +13,14 @@ class HomeController < ApplicationController
   def newsletter
     email = params[:email]
     if email
-      if email.match(EMAIL_FORMAT) && current_user.nil?
+      if email.match(EMAIL_FORMAT)
         NewsletterMailer.signup_confirmation(email).deliver
         redirect_to root_path, flash: { success: "Check your inbox!" }
+        
+      else
+        redirect_back fallback_location: root_path, flash: { warning: "Invalid email entered!" }
       end
     end
+    
   end
-  
-  
-  
 end
