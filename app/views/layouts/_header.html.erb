@@ -15,8 +15,9 @@
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Shop</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <% Collection.all.each do |collection| %>
-            <%= link_to collection.name , collection_path(collection), class: "nav-item nav-link" %>
+            <%= link_to collection.name , collection_path(collection), class: "nav-item nav-link p-2" %>
           <% end %>
+          <%= link_to "all" , items_path, class: "nav-item nav-link p-2" %>
         </div>
       </div>
       
