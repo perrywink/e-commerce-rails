@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  post 'users/set_subscription', to: 'users#set_subscription', as: 'set_subscription'
   
   get 'profile/', to: 'profile#index', as: 'profile'
   
