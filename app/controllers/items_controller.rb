@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     
-    #random popularity score assigned between 1-10 (pass level)
+    # random popularity score assigned between 1-10 (pass level)
     # @item.popularity = (rand()*10).to_i
 
     respond_to do |format|

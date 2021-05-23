@@ -5,7 +5,8 @@ class ItemsControllerTest < ActionDispatch::IntegrationTest
   
   setup do
     @item = items(:one)
-    @items.images.attach(io: File.open(Rails.root.join('test', 'fixtures', 'files' , 'test-image.jpg'), filename: 'test-image.jpg'))
+    @item.images.attach(io: File.open(Rails.root.join('test', 'fixtures' , 'files', 'test-image.jpg')), 
+                filename: 'test-image.jpg')
   end
 
   test "should get index" do

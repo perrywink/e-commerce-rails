@@ -5,6 +5,8 @@ class CollectionsControllerTest < ActionDispatch::IntegrationTest
   
   setup do
     @collection = collections(:one)
+    @collection.image.attach(io: File.open(Rails.root.join('test', 'fixtures' , 'files', 'test-image.jpg')), 
+                filename: 'test-image.jpg')
   end
 
   test "should get index" do
